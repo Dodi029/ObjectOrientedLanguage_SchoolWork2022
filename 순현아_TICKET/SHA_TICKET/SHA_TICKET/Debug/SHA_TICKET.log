@@ -1,0 +1,3 @@
+﻿  Screen.cpp
+C:\Users\순현아\Desktop\2학년 1학기\객체지향언어\과제\순현아_TICKET\SHA_TICKET\SHA_TICKET\Screen.cpp(44): warning C4715:  'Screen::checkReservedID': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  SHA_TICKET.vcxproj -> C:\Users\순현아\Desktop\2학년 1학기\객체지향언어\과제\순현아_TICKET\SHA_TICKET\Debug\SHA_TICKET.exe
