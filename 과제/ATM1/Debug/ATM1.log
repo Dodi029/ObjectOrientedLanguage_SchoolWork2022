@@ -1,0 +1,5 @@
+﻿  Bank.cpp
+  BankAccount.cpp
+  main.cpp
+C:\Users\4717j\Desktop\수업자료\2학년\1학기\객체지향언어\ATM1\main.cpp(49,3): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  코드를 생성하고 있습니다...
