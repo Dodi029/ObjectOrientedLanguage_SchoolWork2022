@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2019: "public: __thiscall ATMachine::~ATMachine(void)" (??1ATMachine@@QAE@XZ)_main 함수에서 참조되는 확인할 수 없는 외부 기호
+C:\Users\joinu\source\repos\PSH_ATM2\Debug\PSH_ATM2.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
