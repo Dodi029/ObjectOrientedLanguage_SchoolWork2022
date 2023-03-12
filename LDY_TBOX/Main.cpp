@@ -1,38 +1,48 @@
 #include <iostream>
 #include <string>
-#include "Screen.hpp"
-#include "TicketBox.hpp"
+#include "Screen.h"
+#include "TicketBox.h"
+#include "Statistics.h"
 using namespace std;
 
 int main() {
-   TUKoreaTBox tBox;
-   Screen* screen = NULL;     // NULLë¡œ ì´ˆê¸°í™”
-   bool bScreenMenu = true;   // bScreenMenuë¥¼ trueë¡œ ì €ì¥
-   int select = 0;            // ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë²ˆí˜¸ë¥¼ ì €ì¥í•  ê³µê°„
-   tBox.Initialize(); // 3ê°œì˜ ìŠ¤í¬ë¦° ê°ì²´ ìƒì„±
-   while (1) {       // whileë°˜ë³µë¬¸ìœ¼ë¡œ ì˜í™” ë©”ë‰´í™”ë©´ ì¶œë ¥ í›„ ë²ˆí˜¸ ì…ë ¥ ë°›ê¸°
-      if (bScreenMenu) {      // bScreenMenuê°€ trueì´ë¯€ë¡œ 
+    TUKoreaTBox tBox;
+    Screen* screen = NULL;     // NULL·Î ÃÊ±âÈ­
+    bool bScreenMenu = true;   // bScreenMenu¸¦ true·Î ÀúÀå
+    int select = 0;            // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹øÈ£¸¦ ÀúÀåÇÒ °ø°£
+    tBox.Initialize(); // 3°³ÀÇ ½ºÅ©¸° °´Ã¼ »ı¼º
+    while (1) {       // while¹İº¹¹®À¸·Î ¿µÈ­ ¸Ş´ºÈ­¸é Ãâ·Â ÈÄ ¹øÈ£ ÀÔ·Â ¹Ş±â
+        if (bScreenMenu) {      // bScreenMenu°¡ trueÀÌ¹Ç·Î 
 
-         screen = tBox.selectMenu();   // TUKoreaTBoxì˜ serlectMenu() ì‹¤í–‰
-         bScreenMenu = false;    // ì‹¤í–‰ í›„ bScreenMenuë¥¼ falseë¡œ ì €ì¥í•˜ì—¬ ifë¬¸ íƒˆì¶œ
-         if (!screen) return 0;  // ë§Œì•½ selectMenu()ì—ì„œ 1,2,3ì´ ì•„ë‹Œ ë‹¤ë¥¸ ê°’ì„ ì…ë ¥í•˜ì—¬
-                                 // defaultë¥¼ í†µí•´ NULLì´ ë¦¬í„´ë  ê²½ìš° í”„ë¡œê·¸ë¨ ì¢…ë£Œ
-      }
-      screen->showMovieMenu();   // NULLì´ ë¦¬í„´ëœ ê²½ìš°ê°€ ì•„ë‹ ê²½ìš° ì„ íƒí•œ ì˜í™” ë©”ë‰´ ì¶œë ¥
-      cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ";   // ì¶œë ¥ëœ ì •ë³´ì• ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë²ˆí˜¸ë¥¼ ì„ ì–¸í•œ ê³µê°„ì— ì €ì¥
-      cin >> select; cout << endl;  // ê°€ë…ì„±ì„ ìœ„í•´ ë‹¤ìŒ ì¤„ë¡œ ì´ë™
-      switch (select) {       // switch()ë¬¸ì„ í†µí•´ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë°˜í˜¸ì— ë”°ë¼ ë‹¤ë¥¸ í•¨ìˆ˜ ì‹¤í–‰
-      case 1: // ì˜í™” ì •ë³´
-         screen->showMovieInfo();   // 1ë²ˆì„ ì„ íƒí•œ ê²½ìš° ì˜í™” ì •ë³´ ì¶œë ¥
-         break;               // ë‹¤ì‹œ while()ë¬¸ìœ¼ë¡œ ì´ë™
-      case 2: // ì¢Œì„ í˜„í™©
-         //screen->showSeatMap();     // 2ë²ˆì„ ì„ íƒí•œ ê²½ìš° ì¢Œì„ ì˜ˆì•½ ì •ë³´ ì¶œë ¥
-         break;               // ë‹¤ì‹œ while()ë¬¸ìœ¼ë¡œ ì´ë™
-      case 7: // ìŠ¤í¬ë¦° ë©”ì¸ ë©”ë‰´
-         bScreenMenu = true;        //   bScreenMenu()ì„ trueë¡œ ì €ì¥í•˜ì—¬ ë‹¤ì‹œ while()ë°˜ë³µë¬¸ì˜ if()ë¬¸ìœ¼ë¡œ ëŒì•„ê°
-         break;      // while()ë¬¸ìœ¼ë¡œ ëŒì•„ê°
-   
-      }
-   }
-   return 0;
+            screen = tBox.selectMenu();   // TUKoreaTBoxÀÇ serlectMenu() ½ÇÇà
+            bScreenMenu = false;    // ½ÇÇà ÈÄ bScreenMenu¸¦ false·Î ÀúÀåÇÏ¿© if¹® Å»Ãâ
+            if (!screen) return 0;  // ¸¸¾à selectMenu()¿¡¼­ 1,2,3ÀÌ ¾Æ´Ñ ´Ù¸¥ °ªÀ» ÀÔ·ÂÇÏ¿©
+                                    // default¸¦ ÅëÇØ NULLÀÌ ¸®ÅÏµÉ °æ¿ì ÇÁ·Î±×·¥ Á¾·á
+        }
+        screen->showMovieMenu();   // NULLÀÌ ¸®ÅÏµÈ °æ¿ì°¡ ¾Æ´Ò °æ¿ì ¼±ÅÃÇÑ ¿µÈ­ ¸Ş´º Ãâ·Â
+        cout << "¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ";   // Ãâ·ÂµÈ Á¤º¸¾Ö¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹øÈ£¸¦ ¼±¾ğÇÑ °ø°£¿¡ ÀúÀå
+        cin >> select; cout << endl;  // °¡µ¶¼ºÀ» À§ÇØ ´ÙÀ½ ÁÙ·Î ÀÌµ¿
+        switch (select) {       // switch()¹®À» ÅëÇØ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹İÈ£¿¡ µû¶ó ´Ù¸¥ ÇÔ¼ö ½ÇÇà
+        case 1: // ¿µÈ­ Á¤º¸
+            screen->showMovieInfo();   // 1¹øÀ» ¼±ÅÃÇÑ °æ¿ì ¿µÈ­ Á¤º¸ Ãâ·Â
+            break;               // ´Ù½Ã while()¹®À¸·Î ÀÌµ¿
+        case 2: // ÁÂ¼® ÇöÈ²
+            screen->showSeatMap();     // 2¹øÀ» ¼±ÅÃÇÑ °æ¿ì ÁÂ¼® ¿¹¾à Á¤º¸ Ãâ·Â
+            break;               // ´Ù½Ã while()¹®À¸·Î ÀÌµ¿
+        case 3: // ÁÂ¼® ¿¹¾à
+            screen->reserveTicket();    // 3¹øÀ» ¼±ÅÃÇÑ °æ¿ì ÁÂ¼® ¿¹¾à ÇÏ±â ½ÇÇà
+            break;
+        case 4: // ÁÂ¼® ¿¹¾à Ãë¼Ò
+            screen->cancelReservation();    // 4¹øÀ» ¼±ÅÃÇÑ °æ¿ì ÁÂ¼® ¿¹¾à Ãë¼Ò ½ÇÇà
+            break;
+        case 5: // °áÁ¦
+            screen->Payment();      // °áÁ¦ÇÏ´Â ÇÔ¼ö ½ÇÇà
+            break;
+        case 7: // ½ºÅ©¸° ¸ŞÀÎ ¸Ş´º
+            bScreenMenu = true;        //   bScreenMenu()À» true·Î ÀúÀåÇÏ¿© ´Ù½Ã while()¹İº¹¹®ÀÇ if()¹®À¸·Î µ¹¾Æ°¨
+            break;      // while()¹®À¸·Î µ¹¾Æ°¨
+
+        }
+    }
+    return 0;
 }
