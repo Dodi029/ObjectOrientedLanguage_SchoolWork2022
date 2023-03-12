@@ -1,39 +1,83 @@
 #include <iostream>
-#include "Screen.hpp"
-#include "TicketBox.hpp"
+#include "Screen.h"
+#include "TicketBox.h"
+#include "Statistics.h"
 using namespace std;
 
-// ìŠ¤í¬ë¦° ê°ì²´ ìƒì„±
+// ½ºÅ©¸° °´Ã¼ »ı¼º
 void TUKoreaTBox::Initialize() {
-   // Screen(ì˜í™”ì œëª©, í‹°ì¼“ê°€ê²©, ì¢Œì„(nRowMax), ì¢Œì„(nColMax))
-   pThrillerScreen = new  ThrillerScreen("í”„ë ˆìŠ¤í‹°ì§€", 10000, 10, 10);
-   pActionScreen = new ActionScreen("ë‹¤í¬ë‚˜ì´íŠ¸", 12000, 10, 10);
-   pSFScreen = new SFScreen("ì•„ë…¼", 30000, 6, 6);
+    // Screen(¿µÈ­Á¦¸ñ, Æ¼ÄÏ°¡°İ, ÁÂ¼®(nRowMax), ÁÂ¼®(nColMax))
+    pThrillerScreen = new  ThrillerScreen("ÇÁ·¹½ºÆ¼Áö", 10000, 20, 15);      // ¿µÈ­ Á¤º¸ µ¿Àû »ı¼º
+    pActionScreen = new ActionScreen("´ÙÅ©³ªÀÌÆ®", 12000, 20, 20);           // ¿µÈ­ Á¤º¸ µ¿Àû »ı¼º
+    pSFScreen = new SFScreen("¾Æ³í", 30000, 12, 12);                          // ¿µÈ­ Á¤º¸ µ¿Àû »ı¼º
 }
 
-Screen* TUKoreaTBox::selectMenu(){           // TicketBox.hì— ìˆëŠ” selectMenuë¥¼ êµ¬í˜„
-   cout << " ---------------- " << endl;
-   cout << "   ìƒì˜ê´€ ë©”ì¸ ë©”ë‰´   " << endl;
-   cout << " ---------------- " << endl;
-   cout << "1.  ìŠ¤ë¦´ëŸ¬  ì˜í™” 1ê´€" << endl;
-   cout << "2.  ì•¡ì…˜   ì˜í™” 2ê´€" << endl;
-   cout << "3.   SF   ì˜í™” 3ê´€" << endl;
-   cout << endl << "ì„ íƒ(1~3) ê·¸ì™¸ ì¢…ë£Œ : ";
-   
-   int select;       // ì‚¬ìš©ìê°€ ì„ íƒí•œ ë²ˆí˜¸ë¥¼ ì €ì¥í•  ê³µê°„
-   cin >> select;    // ì„ ì–¸í•œ ê³µê°„ì— ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë²ˆí˜¸ ì €ì¥
-   cout << endl;     // ê°€ë…ì„±ì„ ìœ„í•´ ë‹¤ìŒ ì¤„ë¡œ ê°€ëŠ” ì½”ë“œ
+TUKoreaTBox::TUKoreaTBox() {
+    pThrillerScreen = NULL;     // ÃÊ±âÈ­
+    pActionScreen = NULL;       // ÃÊ±âÈ­
+    pSFScreen = NULL;           // ÃÊ±âÈ­
+}
 
-   switch(select){   // ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë²ˆí˜¸ì— ë”°ë¼ ë‹¤ë¥¸ í•¨ìˆ˜ ì‹¤í–‰
-      case 1:        // 1ë²ˆ ì…ë ¥ ì‹œ
-         return pThrillerScreen;   // ìŠ¤ë¦´ëŸ¬ ì˜í™”ë¡œ ì´ë™
-      case 2:        // 2ë²ˆ ì…ë ¥ ì‹œ
-         return pActionScreen;     // ì•¡ì…˜ ì˜í™”ë¡œ ì´ë™
-      case 3:        // 3ë²ˆ ì…ë ¥ ì‹œ
-         return pSFScreen;  // í”„ë¦¬ë¯¸ì—„ ì˜í™”ë¡œ ì´ë™
-      default:       // ê·¸ ì™¸ ë²ˆí˜¸ ì…ë ¥ ì‹œ
-         return NULL;            // í”„ë¡œê·¸ë¨ ì¢…ë£Œ
-   }
+TUKoreaTBox::~TUKoreaTBox() {
+    delete pThrillerScreen;     // µ¿Àû »ı¼ºÇÑ ¿µÈ­ Á¤º¸ ¼Ò¸ê
+    delete pActionScreen;       // µ¿Àû »ı¼ºÇÑ ¿µÈ­ Á¤º¸ ¼Ò¸ê
+    delete pSFScreen;           // µ¿Àû »ı¼ºÇÑ ¿µÈ­ Á¤º¸ ¼Ò¸ê
+}
 
+Screen* TUKoreaTBox::selectMenu() {           // TicketBox.h¿¡ ÀÖ´Â selectMenu¸¦ ±¸Çö
+    cout << "------------------------------------" << endl;
+    cout << "         »ó¿µ°ü ¸ŞÀÎ ¸Ş´º   " << endl;
+    cout << "------------------------------------" << endl;
+    cout << "1.  ½º¸±·¯  ¿µÈ­ 1°ü" << endl;
+    cout << "2.  ¾×¼Ç   ¿µÈ­ 2°ü" << endl;
+    cout << "3.   SF   ¿µÈ­ 3°ü" << endl;
+    cout << "9.  Åë°è   °ü¸®" << endl;
+    cout << endl << "¼±ÅÃ(1~3) ±×¿Ü Á¾·á : ";
 
+    int select;       // »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ¹øÈ£¸¦ ÀúÀåÇÒ °ø°£
+    cin >> select;    // ¼±¾ğÇÑ °ø°£¿¡ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹øÈ£ ÀúÀå
+    cout << endl;     // °¡µ¶¼ºÀ» À§ÇØ ´ÙÀ½ ÁÙ·Î °¡´Â ÄÚµå
+
+    switch (select) {   // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹øÈ£¿¡ µû¶ó ´Ù¸¥ ÇÔ¼ö ½ÇÇà
+    case 1:        // 1¹ø ÀÔ·Â ½Ã
+        return pThrillerScreen;   // ½º¸±·¯ ¿µÈ­·Î ÀÌµ¿
+    case 2:        // 2¹ø ÀÔ·Â ½Ã
+        return pActionScreen;     // ¾×¼Ç ¿µÈ­·Î ÀÌµ¿
+    case 3:        // 3¹ø ÀÔ·Â ½Ã
+        return pSFScreen;  // SF ¿µÈ­·Î ÀÌµ¿
+    case 9:         // 9¹ø ÀÔ·Â ½Ã
+        Manage();   // °ü¸®ÀÚ ¸ğµå ÇÔ¼ö ½ÇÇà
+        return NULL;       
+    default:       // ±× ¿Ü ¹øÈ£ ÀÔ·Â ½Ã
+        return NULL;            // ÇÁ·Î±×·¥ Á¾·á
+    }
+
+}
+
+void TUKoreaTBox::Manage() {        // °ü¸®ÀÚ ¸ğµå 
+    string PWD;         // ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£¸¦ ÀúÀåÇÒ °ø°£
+    Statistics sta;         // Statistics Çü½Ä ¼±¾ğ
+    int totalcount = 0;     // ÃÑ Æ¼ÄÏ ÆÇ¸Å·® 0À¸·Î ÃÊ±â°ª ÀúÀå
+
+    cout << "------------------------------------" << endl;
+    cout << "             °ü¸®ÀÚ ¸Ş´º" << endl;
+    cout << "------------------------------------" << endl;
+    cout << "°ü¸®ÀÚ ºñ¹Ğ¹øÈ£ ÀÔ·Â : ";
+    cin >> PWD;     // ÀÔ·ÂÇÑ °ü¸®ÀÚ ºñ¹Ğ¹øÈ£ ÀúÀå
+
+    if (PWD == TICKETBOX_MANAGER_PWD) {     // ±âÁ¸¿¡ ÀúÀåµÈ ºñ¹Ğ¹øÈ£¿Í ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£°¡ °°À» ¶§
+        totalcount += sta.totalSalesCount(pThrillerScreen);     // ½º¸±·Á »ó¿µ°ü¿¡¼­ ÆÇ¸ÅµÈ Æ¼ÄÏ´ç totalcount ÇÏ³ª¾¿ Áõ°¡
+        totalcount += sta.totalSalesCount(pActionScreen);       // ¾×¼Ç »ó¿µ°ü¿¡¼­ ÆÇ¸ÅµÈ Æ¼ÄÏ´ç totalcount ÇÏ³ª¾¿ Áõ°¡
+        totalcount += sta.totalSalesCount(pSFScreen);           // SF »ó¿µ°ü¿¡¼­ ÆÇ¸ÅµÈ Æ¼ÄÏ´ç totalcount ÇÏ³ª¾¿ Áõ°¡
+
+        cout << endl;
+        cout << "1. ½º¸±·¯ »ó¿µ°ü °áÁ¦±İ¾× : " << sta.totalRevenue(pThrillerScreen) << " ¿ø" << endl;  // ½º¸±·¯ »ó¿µ°ü °áÁ¦ ±İ¾× Ãâ·Â
+        cout << "2. ¾×¼Ç »ó¿µ°ü °áÁ¦±İ¾× : " << sta.totalRevenue(pActionScreen) << " ¿ø" << endl;      // ¾×¼Ç »ó¿µ°ü °áÁ¦ ±İ¾× Ãâ·Â
+        cout << "3. SF »ó¿µ°ü °áÁ¦±İ¾× : " << sta.totalRevenue(pSFScreen) << " ¿ø" << endl;            // SF »ó¿µ°ü °áÁ¦ ±İ¾× Ãâ·Â
+        cout << "4. ÀüÃ¼ Æ¼ÄÏ ÆÇ¸Å·® : " << totalcount << " Àå" << endl;        // Áõ°¡ÇÑ totalcount¸¦ ÀüÃ¼ Æ¼ÄÏ ÆÇ¸Å·®À¸·Î Ãâ·Â
+    }
+    else {      // ÀúÀåµÈ ºñ¹Ğ¹øÈ£¿Í ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£°¡ ´Ù¸¦°æ¿ì
+        cout << endl;  
+        cout << "Àß¸øµÈ ºñ¹Ğ¹øÈ£ ÀÔ´Ï´Ù." << endl;       // ºñ¹Ğ¹øÈ£°¡ Àß¸øµÇ¾ú´Ù°í Ãâ·Â
+    }
 }
