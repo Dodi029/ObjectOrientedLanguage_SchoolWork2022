@@ -15,29 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="5-1 함수 호출 시 객체 전달.cpp">
+    <ClCompile Include="..\..\..\..\..\..\..\Downloads\PSH_ATM2\Account.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="5-3 기본 타입 변수에 대한 참조.cpp">
+    <ClCompile Include="..\..\..\..\..\..\..\Downloads\PSH_ATM2\ATMmachine.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="5-5 참조 매개 변수로 평균 리턴하기.cpp">
+    <ClCompile Include="..\..\..\..\..\..\..\Downloads\PSH_ATM2\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="5-8 간단한 참조 리턴 사례.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-9 Circle의 복사 생성자와 객체 복사.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-10 얕은 복사 생성자를 사용하여 프로그램이 비정상 종료되는 경우.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="교재연습문제p270-4.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-11.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\Downloads\PSH_ATM2\Account.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\Downloads\PSH_ATM2\ATMachine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

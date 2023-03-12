@@ -1,2 +1,2 @@
-﻿  소스.cpp
-  5장.vcxproj -> C:\Users\도영\Desktop\수업자료\학교\2학년 1학기\객체지향언어\코드\5장\Debug\5장.exe
+﻿  교재연습문제p270-4.cpp
+C:\Users\4717j\Desktop\수업자료\2학년\1학기\객체지향언어\5장\교재연습문제p270-4.cpp(21): error C4716: 'Com::Compare': 값을 반환해야 합니다.
